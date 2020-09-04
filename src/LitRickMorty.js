@@ -8,18 +8,6 @@ export class LitRickMorty extends LitElement {
         padding: 25px;
         color: var(--lit-rick-morty-text-color, #000);
       }
-      .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        row-gap: 1.5rem;
-        column-gap: 1rem;
-        align-content: space-around;
-        justify-content: space-around;
-      }
-      
-      .contenido p {
-        text-align: center;
-      }
     `;
   }
 
@@ -53,24 +41,10 @@ export class LitRickMorty extends LitElement {
         url: personaje.image
       });
     });
-    console.log(this.personajes);
+    this.dispatchEvent(new CustomEvent('response', {detail: this.personajes}));
   }
 
   render() {
-    return html`
-      <div class="container">
-        ${this.personajes.map(personaje => html`
-          <div class="card">
-            <div class="imagen">
-              <img src="${personaje.url}" alt="${personaje.name}"/>
-            </div>
-            <div class="contenido">
-              <p><span>${personaje.index}</span></p>
-              <p><strong>${personaje.name}</strong></p>
-            </div>
-          </div>
-        `)}
-      </div>
-    `;
+    return html``;
   }
 }
